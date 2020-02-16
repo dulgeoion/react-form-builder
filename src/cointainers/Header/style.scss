@@ -1,0 +1,22 @@
+.header {
+  text-align: center;
+
+ 
+  &__navbar {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: fit-content;
+    border: 1px solid black;
+    margin: 1em auto;
+
+    &-item {
+      margin: 10px 0;
+      padding: 10px;
+      // border: 1px solid sgrey;
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.builder {
+  &__element-selector {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  &__checkbox-item {
+
+    margin: 1em;
+  }
+
+  
+  &__btn {
+    height: 3em;
+    width: 3em;
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  &__display {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+  }
+
+  &__category {
+    border: 1px solid black;
+    padding: 1em 5em;
+    background-color: white;
+    position: relative;
+
+    &--selected {
+      background-color: lightgray;
+    }
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__children {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__children > * {
+    margin-top: 1em ;
+  }
+
+  &__del-category {
+    cursor: pointer;
+   &--absolute {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+   }
+  }
+
+  input {
+    border: 1px solid black;
+    padding: 0.5em;
+  }
+
+}
