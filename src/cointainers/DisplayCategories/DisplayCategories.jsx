@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import "./styles.scss";
-import { useState } from "react";
-import { unflutten } from "../../utils/unflutten";
+import React, { useEffect } from 'react';
+import './styles.scss';
+import { useState } from 'react';
+import { unflutten } from '../../utils/unflutten';
 
 const Title = props => {
   switch (props.depth) {
@@ -26,13 +26,15 @@ export const DisplayCategories = () => {
   const [words, setWords] = useState([]);
 
   useEffect(() => {
-    let _layers = JSON.parse(localStorage.getItem("layers"));
+    let _layers = JSON.parse(localStorage.getItem('layers'));
     setTree(unflutten(_layers));
+    _layers
+      .filter(i => i.type === 'selector')
+      .map(i => setValues({ ...values, [i.name]: i.values[0] }));
   }, []);
 
-
   const addWord = () => {
-    let _layers = JSON.parse(localStorage.getItem("layers"));
+    let _layers = JSON.parse(localStorage.getItem('layers'));
     const newWords = [...words];
 
     const newValues = { ...values };
@@ -48,7 +50,7 @@ export const DisplayCategories = () => {
 
   const displayItem = (item, depth) => {
     switch (item.type) {
-      case "category": {
+      case 'category': {
         return (
           <div key={item.id}>
             <Title depth={depth}>{item.title}</Title>
@@ -57,7 +59,7 @@ export const DisplayCategories = () => {
           </div>
         );
       }
-      case "input": {
+      case 'input': {
         return (
           <div key={item.id}>
             <label htmlFor={item.id}>{item.title}</label>
@@ -65,7 +67,7 @@ export const DisplayCategories = () => {
             <input
               id={item.id}
               name={item.name}
-              value={values[item.name]}
+              value={values[item.name] || ''}
               onChange={e =>
                 setValues({ ...values, [item.name]: e.target.value })
               }
@@ -73,7 +75,7 @@ export const DisplayCategories = () => {
           </div>
         );
       }
-      case "selector": {
+      case 'selector': {
         return (
           <div key={item.id}>
             {item.title}
@@ -81,7 +83,7 @@ export const DisplayCategories = () => {
             <select
               placeholder={item.title}
               name={item.name}
-              defaultValue={item.values[0]}
+              // defaultValue={item.values[0]}
               value={values[item.name]}
               onChange={e =>
                 setValues({ ...values, [item.name]: e.target.value })
@@ -103,7 +105,7 @@ export const DisplayCategories = () => {
 
   const displayWord = (w, depth) => {
     switch (w.type) {
-      case "category":
+      case 'category':
         return (
           <div key={w.id}>
             <Title depth={depth}>{w.title}</Title>

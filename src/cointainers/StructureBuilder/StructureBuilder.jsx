@@ -80,7 +80,8 @@ export const StructureBuilder = () => {
         parent: selectedItem.id,
         type: selected,
         title: metadata.title ? metadata.title : metadata,
-        values: metadata.values || []
+        values: metadata.values || [],
+        name: metadata.name
       }
     });
     setCounter(counter + 1);

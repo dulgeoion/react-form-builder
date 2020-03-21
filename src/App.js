@@ -45,13 +45,7 @@ function App() {
               exact
               component={user.isLoggedIn ? AuthorizedPage : LoginPage}
             />
-            <Route
-              path="/builder"
-              exact
-              component={
-                user.isLoggedIn ? StructureBuilder : () => <Redirect to="/" />
-              }
-            />
+            <Route path="/builder" exact component={StructureBuilder} />
             <Route path="/display" exact component={DisplayCategories} />
             {/* <Route path="/" component={LoginPage} /> */}
           </Switch>
